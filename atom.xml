@@ -5,7 +5,7 @@
   <link href="/learn.github.io/atom.xml" rel="self"/>
   
   <link href="http://coder-mr-yang.github.io/learn.github.io/"/>
-  <updated>2017-05-12T01:42:43.000Z</updated>
+  <updated>2017-05-12T01:44:05.000Z</updated>
   <id>http://coder-mr-yang.github.io/learn.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>IntelliJ IDEA For Mac 快捷键 (一)</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/04/23/idea-for-mac/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/04/23/idea-for-mac/</id>
-    <published>2017-04-22T16:00:00.000Z</published>
-    <updated>2017-05-12T01:42:43.000Z</updated>
+    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/"/>
+    <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/</id>
+    <published>2017-05-11T16:00:00.000Z</published>
+    <updated>2017-05-12T01:44:05.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="IntelliJ-IDEA-For-Mac-快捷键"><a href="#IntelliJ-IDEA-For-Mac-快捷键" class="headerlink" title="IntelliJ IDEA For Mac 快捷键"></a>IntelliJ IDEA For Mac 快捷键</h2><h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
 ⌃ Control
@@ -195,10 +195,10 @@ F3选中文件/文件夹/代码行，添加/取消书签
     
     </summary>
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/java/"/>
+      <category term="idea" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/idea/"/>
     
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/java/"/>
+      <category term="idea" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/idea/"/>
     
   </entry>
   
