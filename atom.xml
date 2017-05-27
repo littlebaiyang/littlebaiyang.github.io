@@ -133,7 +133,7 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/</id>
     <published>2017-05-11T16:00:00.000Z</published>
-    <updated>2017-05-27T03:06:09.000Z</updated>
+    <updated>2017-05-27T03:17:06.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
 ⌃ Control
@@ -306,7 +306,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘⌥U 显示类UML图
 
 ⌃J 查看注释
-</code></pre><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><pre><code>⌥⌦ 删除到单词的末尾（⌦键为Fn+Delete）
+</code></pre><h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><pre><code>⌥⌦ 删除到单词的末尾（⌦键为Fn+Delete）
 
 ⌥⌫ 删除到单词的开头
 
@@ -329,7 +329,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘N, ⌃↩, ⌃N 生成代码（getter、setter、构造函数、hashCode/equals,toString）
 
 ⌘P 显示方法的参数信息
-</code></pre><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><pre><code>Double⇧ 查找任何东西
+</code></pre><h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><pre><code>Double⇧ 查找任何东西
 
 ⌘⇧F 全局查找（根据路径）
 
@@ -338,7 +338,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘G 查找模式下，向下查找
 
 ⌘⇧G 查找模式下，向上查找
-</code></pre><h3 id="导航-1"><a href="#导航-1" class="headerlink" title="导航"></a>导航</h3><pre><code>⌘⌥B 跳转到接口的实现
+</code></pre><h4 id="导航-1"><a href="#导航-1" class="headerlink" title="导航"></a>导航</h4><pre><code>⌘⌥B 跳转到接口的实现
 
 ⌘U 查看接口定义
 
@@ -371,7 +371,7 @@ F3选中文件/文件夹/代码行，添加/取消书签
 ⌥F1 显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择(如在代码编辑窗口可以选择显示该文件的Finder)
 
 ⌘F12 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选（可用于搜索类中的方法）
-</code></pre><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><pre><code>⌃⌘F 切换全屏模式
+</code></pre><h4 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h4><pre><code>⌃⌘F 切换全屏模式
 </code></pre>]]></content>
     
     <summary type="html">
