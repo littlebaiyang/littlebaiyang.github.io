@@ -92,23 +92,23 @@
 
 <meta name="description" content="[toc]
 Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。
-一. 流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
-1. 初始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;q">
+流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
+始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java Stream 的用法">
 <meta property="og:url" content="http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/index.html">
 <meta property="og:site_name" content="杨康的学习笔记">
 <meta property="og:description" content="[toc]
 Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。
-一. 流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
-1. 初始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;q">
-<meta property="og:updated_time" content="2017-05-26T08:40:42.000Z">
+流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
+始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;">
+<meta property="og:updated_time" content="2017-05-27T03:05:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java Stream 的用法">
 <meta name="twitter:description" content="[toc]
 Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。
-一. 流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
-1. 初始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;q">
+流的初始化与转换：  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：
+始化一个流：Stream stream = Stream.of(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;">
 
 
 
@@ -128,7 +128,7 @@ Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream
       applicationID: '',
       apiKey: '',
       indexName: '',
-      hits: {"per_page":2},
+      hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
@@ -368,8 +368,8 @@ Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-26T16:40:42+08:00">
-                2017-05-26
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-27T11:05:03+08:00">
+                2017-05-27
               </time>
             
           </span>
@@ -438,38 +438,38 @@ Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream
         <hr>
 <p> [toc]</p>
 <p>Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。</p>
-<h2 id="一-流的初始化与转换："><a href="#一-流的初始化与转换：" class="headerlink" title="一. 流的初始化与转换："></a>一. 流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
-<h3 id="1-初始化一个流："><a href="#1-初始化一个流：" class="headerlink" title="1. 初始化一个流："></a>1. 初始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-</code></pre><h3 id="2、数组转换为一个流："><a href="#2、数组转换为一个流：" class="headerlink" title="2、数组转换为一个流："></a>2、数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+<h2 id="流的初始化与转换："><a href="#流的初始化与转换：" class="headerlink" title="流的初始化与转换："></a>流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
+<h3 id="始化一个流："><a href="#始化一个流：" class="headerlink" title="始化一个流："></a>始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre><h3 id="数组转换为一个流："><a href="#数组转换为一个流：" class="headerlink" title="数组转换为一个流："></a>数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
 stream = Stream.of(strArray);
 或者
 stream = Arrays.stream(strArray);
-</code></pre><h3 id="3、集合对象转换为一个流（Collections）："><a href="#3、集合对象转换为一个流（Collections）：" class="headerlink" title="3、集合对象转换为一个流（Collections）："></a>3、集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
+</code></pre><h3 id="集合对象转换为一个流（Collections）："><a href="#集合对象转换为一个流（Collections）：" class="headerlink" title="集合对象转换为一个流（Collections）："></a>集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
 stream = list.stream();
-</code></pre><h2 id="二、流的操作："><a href="#二、流的操作：" class="headerlink" title="二、流的操作："></a>二、流的操作：</h2><pre><code>流的操作可以归结为几种：
-</code></pre><h3 id="1、遍历操作-map-："><a href="#1、遍历操作-map-：" class="headerlink" title="1、遍历操作(map)："></a>1、遍历操作(map)：</h3><pre><code>使用map操作可以遍历集合中的每个对象，并对其进行操作，map之后，用.collect(Collectors.toList())会得到操作后的集合。
-</code></pre><h4 id="1-1、遍历转换为大写："><a href="#1-1、遍历转换为大写：" class="headerlink" title="1.1、遍历转换为大写："></a>1.1、遍历转换为大写：</h4><pre><code>List&lt;String&gt; output = wordList.stream().
+</code></pre><h2 id="流的操作："><a href="#流的操作：" class="headerlink" title="流的操作："></a>流的操作：</h2><pre><code>流的操作可以归结为几种：
+</code></pre><h3 id="遍历操作-map-："><a href="#遍历操作-map-：" class="headerlink" title="遍历操作(map)："></a>遍历操作(map)：</h3><pre><code>使用map操作可以遍历集合中的每个对象，并对其进行操作，map之后，用.collect(Collectors.toList())会得到操作后的集合。
+</code></pre><h4 id="遍历转换为大写："><a href="#遍历转换为大写：" class="headerlink" title="遍历转换为大写："></a>遍历转换为大写：</h4><pre><code>List&lt;String&gt; output = wordList.stream().
      map(String::toUpperCase).
            collect(Collectors.toList());
-</code></pre><h4 id="1-2、平方数："><a href="#1-2、平方数：" class="headerlink" title="1.2、平方数："></a>1.2、平方数：</h4><pre><code>List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+</code></pre><h4 id="平方数："><a href="#平方数：" class="headerlink" title="平方数："></a>平方数：</h4><pre><code>List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
    List&lt;Integer&gt; squareNums = nums.stream().
          map(n -&gt; n * n).
        collect(Collectors.toList());
-</code></pre><h3 id="2、过滤操作-filter-："><a href="#2、过滤操作-filter-：" class="headerlink" title="2、过滤操作(filter)："></a>2、过滤操作(filter)：</h3><pre><code>使用filter可以对象Stream中进行过滤，通过测试的元素将会留下来生成一个新的Stream。
-</code></pre><h4 id="2-1、得到其中不为空的String"><a href="#2-1、得到其中不为空的String" class="headerlink" title="2.1、得到其中不为空的String"></a>2.1、得到其中不为空的String</h4><pre><code>List&lt;String&gt; filterLists = new ArrayList&lt;&gt;();
+</code></pre><h3 id="过滤操作-filter-："><a href="#过滤操作-filter-：" class="headerlink" title="过滤操作(filter)："></a>过滤操作(filter)：</h3><pre><code>使用filter可以对象Stream中进行过滤，通过测试的元素将会留下来生成一个新的Stream。
+</code></pre><h4 id="得到其中不为空的String"><a href="#得到其中不为空的String" class="headerlink" title="得到其中不为空的String"></a>得到其中不为空的String</h4><pre><code>List&lt;String&gt; filterLists = new ArrayList&lt;&gt;();
 filterLists.add(&quot;&quot;);
 filterLists.add(&quot;a&quot;);
 filterLists.add(&quot;b&quot;);
 List afterFilterLists = filterLists.stream()
        .filter(s -&gt; !s.isEmpty())
         .collect(Collectors.toList());
-</code></pre><h3 id="3、循环操作-forEach"><a href="#3、循环操作-forEach" class="headerlink" title="3、循环操作(forEach):"></a>3、循环操作(forEach):</h3><pre><code>如果只是想对流中的每个对象进行一些自定义的操作，可以使用forEach：
+</code></pre><h3 id="循环操作-forEach"><a href="#循环操作-forEach" class="headerlink" title="循环操作(forEach):"></a>循环操作(forEach):</h3><pre><code>如果只是想对流中的每个对象进行一些自定义的操作，可以使用forEach：
 List&lt;String&gt; forEachLists = new ArrayList&lt;&gt;();
 forEachLists.add(&quot;a&quot;);
 forEachLists.add(&quot;b&quot;);
 forEachLists.add(&quot;c&quot;);
 forEachLists.stream().forEach(s-&gt; System.out.println(s));
-</code></pre><h3 id="4、返回特定的结果集合（limit-skip）："><a href="#4、返回特定的结果集合（limit-skip）：" class="headerlink" title="4、返回特定的结果集合（limit/skip）："></a>4、返回特定的结果集合（limit/skip）：</h3><pre><code>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素:
+</code></pre><h3 id="返回特定的结果集合（limit-skip）："><a href="#返回特定的结果集合（limit-skip）：" class="headerlink" title="返回特定的结果集合（limit/skip）："></a>返回特定的结果集合（limit/skip）：</h3><pre><code>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素:
 List&lt;String&gt; forEachLists = new ArrayList&lt;&gt;();
 forEachLists.add(&quot;a&quot;);
 forEachLists.add(&quot;b&quot;);
@@ -479,8 +479,8 @@ forEachLists.add(&quot;e&quot;);
 forEachLists.add(&quot;f&quot;);
 List&lt;String&gt; limitLists = forEachLists.stream().skip(2).limit(3).collect(Collectors.toList());
 注意skip与limit是有顺序关系的，比如使用skip(2)会跳过集合的前两个，返回的为c、d、e、f,然后调用limit(3)会返回前3个，所以最后返回的c,d,e
-</code></pre><h3 id="5、排序（sort-min-max-distinct）："><a href="#5、排序（sort-min-max-distinct）：" class="headerlink" title="5、排序（sort/min/max/distinct）："></a>5、排序（sort/min/max/distinct）：</h3><pre><code>sort可以对集合中的所有元素进行排序。max，min可以寻找出流中最大或者最小的元素，而distinct可以寻找出不重复的元素：
-</code></pre><h4 id="5-1、对一个集合进行排序："><a href="#5-1、对一个集合进行排序：" class="headerlink" title="5.1、对一个集合进行排序："></a>5.1、对一个集合进行排序：</h4><pre><code>List&lt;Integer&gt; sortLists = new ArrayList&lt;&gt;();
+</code></pre><h3 id="排序（sort-min-max-distinct）："><a href="#排序（sort-min-max-distinct）：" class="headerlink" title="排序（sort/min/max/distinct）："></a>排序（sort/min/max/distinct）：</h3><pre><code>sort可以对集合中的所有元素进行排序。max，min可以寻找出流中最大或者最小的元素，而distinct可以寻找出不重复的元素：
+</code></pre><h4 id="对一个集合进行排序："><a href="#对一个集合进行排序：" class="headerlink" title="对一个集合进行排序："></a>对一个集合进行排序：</h4><pre><code>List&lt;Integer&gt; sortLists = new ArrayList&lt;&gt;();
 sortLists.add(1);
 sortLists.add(4);
 sortLists.add(6);
@@ -488,7 +488,7 @@ sortLists.add(3);
 sortLists.add(2);
 List&lt;Integer&gt; afterSortLists = sortLists.stream().sorted((In1,In2)-&gt;
        In1-In2).collect(Collectors.toList());
-</code></pre><h4 id="5-2、得到其中长度最大的元素："><a href="#5-2、得到其中长度最大的元素：" class="headerlink" title="5.2、得到其中长度最大的元素："></a>5.2、得到其中长度最大的元素：</h4><pre><code>List&lt;String&gt; maxLists = new ArrayList&lt;&gt;();
+</code></pre><h4 id="得到其中长度最大的元素："><a href="#得到其中长度最大的元素：" class="headerlink" title="得到其中长度最大的元素："></a>得到其中长度最大的元素：</h4><pre><code>List&lt;String&gt; maxLists = new ArrayList&lt;&gt;();
 maxLists.add(&quot;a&quot;);
 maxLists.add(&quot;b&quot;);
 maxLists.add(&quot;c&quot;);
@@ -498,24 +498,24 @@ maxLists.add(&quot;f&quot;);
 maxLists.add(&quot;hahaha&quot;);
 int maxLength = maxLists.stream().mapToInt(s-&gt;s.length()).max().getAsInt();
 System.out.println(&quot;字符串长度最长的长度为&quot;+maxLength);
-</code></pre><h4 id="5-3、对一个集合进行查重："><a href="#5-3、对一个集合进行查重：" class="headerlink" title="5.3、对一个集合进行查重："></a>5.3、对一个集合进行查重：</h4><pre><code>List&lt;String&gt; distinctList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="对一个集合进行查重："><a href="#对一个集合进行查重：" class="headerlink" title="对一个集合进行查重："></a>对一个集合进行查重：</h4><pre><code>List&lt;String&gt; distinctList = new ArrayList&lt;&gt;();
 distinctList.add(&quot;a&quot;);
 distinctList.add(&quot;a&quot;);
 distinctList.add(&quot;c&quot;);
 distinctList.add(&quot;d&quot;);
 List&lt;String&gt; afterDistinctList = distinctList.stream().distinct().collect(Collectors.toList());
 其中的distinct()方法能找出stream中元素equal()，即相同的元素，并将相同的去除，上述返回即为a,c,d。
-</code></pre><h3 id="6、匹配-Match方法-："><a href="#6、匹配-Match方法-：" class="headerlink" title="6、匹配(Match方法)："></a>6、匹配(Match方法)：</h3><pre><code>有的时候，我们只需要判断集合中是否全部满足条件，或者判断集合中是否有满足条件的元素，这时候就可以使用match方法：
+</code></pre><h3 id="匹配-Match方法-："><a href="#匹配-Match方法-：" class="headerlink" title="匹配(Match方法)："></a>匹配(Match方法)：</h3><pre><code>有的时候，我们只需要判断集合中是否全部满足条件，或者判断集合中是否有满足条件的元素，这时候就可以使用match方法：
 allMatch：Stream 中全部元素符合传入的 predicate，返回 true
 anyMatch：Stream 中只要有一个元素符合传入的 predicate，返回 true
 noneMatch：Stream 中没有一个元素符合传入的 predicate，返回 true
-</code></pre><h4 id="6-1、判断集合中没有有为‘c’的元素："><a href="#6-1、判断集合中没有有为‘c’的元素：" class="headerlink" title="6.1、判断集合中没有有为‘c’的元素："></a>6.1、判断集合中没有有为‘c’的元素：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="判断集合中没有有为‘c’的元素："><a href="#判断集合中没有有为‘c’的元素：" class="headerlink" title="判断集合中没有有为‘c’的元素："></a>判断集合中没有有为‘c’的元素：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;c&quot;);
 matchList.add(&quot;d&quot;); 
 boolean isExits = matchList.stream().anyMatch(s -&gt; s.equals(&quot;c&quot;));
-</code></pre><h4 id="6-2、判断集合中是否全不为空："><a href="#6-2、判断集合中是否全不为空：" class="headerlink" title="6.2、判断集合中是否全不为空："></a>6.2、判断集合中是否全不为空：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="判断集合中是否全不为空："><a href="#判断集合中是否全不为空：" class="headerlink" title="判断集合中是否全不为空："></a>判断集合中是否全不为空：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;&quot;);
 matchList.add(&quot;a&quot;);
@@ -718,7 +718,7 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-流的初始化与转换："><span class="nav-number">1.</span> <span class="nav-text">一. 流的初始化与转换：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-初始化一个流："><span class="nav-number">1.1.</span> <span class="nav-text">1. 初始化一个流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、数组转换为一个流："><span class="nav-number">1.2.</span> <span class="nav-text">2、数组转换为一个流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、集合对象转换为一个流（Collections）："><span class="nav-number">1.3.</span> <span class="nav-text">3、集合对象转换为一个流（Collections）：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、流的操作："><span class="nav-number">2.</span> <span class="nav-text">二、流的操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、遍历操作-map-："><span class="nav-number">2.1.</span> <span class="nav-text">1、遍历操作(map)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、遍历转换为大写："><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1、遍历转换为大写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、平方数："><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2、平方数：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、过滤操作-filter-："><span class="nav-number">2.2.</span> <span class="nav-text">2、过滤操作(filter)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1、得到其中不为空的String"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1、得到其中不为空的String</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、循环操作-forEach"><span class="nav-number">2.3.</span> <span class="nav-text">3、循环操作(forEach):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、返回特定的结果集合（limit-skip）："><span class="nav-number">2.4.</span> <span class="nav-text">4、返回特定的结果集合（limit/skip）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、排序（sort-min-max-distinct）："><span class="nav-number">2.5.</span> <span class="nav-text">5、排序（sort/min/max/distinct）：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1、对一个集合进行排序："><span class="nav-number">2.5.1.</span> <span class="nav-text">5.1、对一个集合进行排序：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2、得到其中长度最大的元素："><span class="nav-number">2.5.2.</span> <span class="nav-text">5.2、得到其中长度最大的元素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3、对一个集合进行查重："><span class="nav-number">2.5.3.</span> <span class="nav-text">5.3、对一个集合进行查重：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、匹配-Match方法-："><span class="nav-number">2.6.</span> <span class="nav-text">6、匹配(Match方法)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1、判断集合中没有有为‘c’的元素："><span class="nav-number">2.6.1.</span> <span class="nav-text">6.1、判断集合中没有有为‘c’的元素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2、判断集合中是否全不为空："><span class="nav-number">2.6.2.</span> <span class="nav-text">6.2、判断集合中是否全不为空：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流的初始化与转换："><span class="nav-number">1.</span> <span class="nav-text">流的初始化与转换：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#始化一个流："><span class="nav-number">1.1.</span> <span class="nav-text">始化一个流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组转换为一个流："><span class="nav-number">1.2.</span> <span class="nav-text">数组转换为一个流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合对象转换为一个流（Collections）："><span class="nav-number">1.3.</span> <span class="nav-text">集合对象转换为一个流（Collections）：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流的操作："><span class="nav-number">2.</span> <span class="nav-text">流的操作：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历操作-map-："><span class="nav-number">2.1.</span> <span class="nav-text">遍历操作(map)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历转换为大写："><span class="nav-number">2.1.1.</span> <span class="nav-text">遍历转换为大写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平方数："><span class="nav-number">2.1.2.</span> <span class="nav-text">平方数：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤操作-filter-："><span class="nav-number">2.2.</span> <span class="nav-text">过滤操作(filter)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#得到其中不为空的String"><span class="nav-number">2.2.1.</span> <span class="nav-text">得到其中不为空的String</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环操作-forEach"><span class="nav-number">2.3.</span> <span class="nav-text">循环操作(forEach):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回特定的结果集合（limit-skip）："><span class="nav-number">2.4.</span> <span class="nav-text">返回特定的结果集合（limit/skip）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序（sort-min-max-distinct）："><span class="nav-number">2.5.</span> <span class="nav-text">排序（sort/min/max/distinct）：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对一个集合进行排序："><span class="nav-number">2.5.1.</span> <span class="nav-text">对一个集合进行排序：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#得到其中长度最大的元素："><span class="nav-number">2.5.2.</span> <span class="nav-text">得到其中长度最大的元素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对一个集合进行查重："><span class="nav-number">2.5.3.</span> <span class="nav-text">对一个集合进行查重：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配-Match方法-："><span class="nav-number">2.6.</span> <span class="nav-text">匹配(Match方法)：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断集合中没有有为‘c’的元素："><span class="nav-number">2.6.1.</span> <span class="nav-text">判断集合中没有有为‘c’的元素：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断集合中是否全不为空："><span class="nav-number">2.6.2.</span> <span class="nav-text">判断集合中是否全不为空：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

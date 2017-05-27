@@ -5,7 +5,7 @@
   <link href="/learn.github.io/atom.xml" rel="self"/>
   
   <link href="http://coder-mr-yang.github.io/learn.github.io/"/>
-  <updated>2017-05-26T08:40:42.000Z</updated>
+  <updated>2017-05-27T03:05:03.000Z</updated>
   <id>http://coder-mr-yang.github.io/learn.github.io/</id>
   
   <author>
@@ -20,43 +20,43 @@
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/</id>
     <published>2017-05-25T16:00:00.000Z</published>
-    <updated>2017-05-26T08:40:42.000Z</updated>
+    <updated>2017-05-27T03:05:03.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p> [toc]</p>
 <p>Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。</p>
-<h2 id="一-流的初始化与转换："><a href="#一-流的初始化与转换：" class="headerlink" title="一. 流的初始化与转换："></a>一. 流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
-<h3 id="1-初始化一个流："><a href="#1-初始化一个流：" class="headerlink" title="1. 初始化一个流："></a>1. 初始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-</code></pre><h3 id="2、数组转换为一个流："><a href="#2、数组转换为一个流：" class="headerlink" title="2、数组转换为一个流："></a>2、数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+<h2 id="流的初始化与转换："><a href="#流的初始化与转换：" class="headerlink" title="流的初始化与转换："></a>流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
+<h3 id="始化一个流："><a href="#始化一个流：" class="headerlink" title="始化一个流："></a>始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre><h3 id="数组转换为一个流："><a href="#数组转换为一个流：" class="headerlink" title="数组转换为一个流："></a>数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
 stream = Stream.of(strArray);
 或者
 stream = Arrays.stream(strArray);
-</code></pre><h3 id="3、集合对象转换为一个流（Collections）："><a href="#3、集合对象转换为一个流（Collections）：" class="headerlink" title="3、集合对象转换为一个流（Collections）："></a>3、集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
+</code></pre><h3 id="集合对象转换为一个流（Collections）："><a href="#集合对象转换为一个流（Collections）：" class="headerlink" title="集合对象转换为一个流（Collections）："></a>集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
 stream = list.stream();
-</code></pre><h2 id="二、流的操作："><a href="#二、流的操作：" class="headerlink" title="二、流的操作："></a>二、流的操作：</h2><pre><code>流的操作可以归结为几种：
-</code></pre><h3 id="1、遍历操作-map-："><a href="#1、遍历操作-map-：" class="headerlink" title="1、遍历操作(map)："></a>1、遍历操作(map)：</h3><pre><code>使用map操作可以遍历集合中的每个对象，并对其进行操作，map之后，用.collect(Collectors.toList())会得到操作后的集合。
-</code></pre><h4 id="1-1、遍历转换为大写："><a href="#1-1、遍历转换为大写：" class="headerlink" title="1.1、遍历转换为大写："></a>1.1、遍历转换为大写：</h4><pre><code>List&lt;String&gt; output = wordList.stream().
+</code></pre><h2 id="流的操作："><a href="#流的操作：" class="headerlink" title="流的操作："></a>流的操作：</h2><pre><code>流的操作可以归结为几种：
+</code></pre><h3 id="遍历操作-map-："><a href="#遍历操作-map-：" class="headerlink" title="遍历操作(map)："></a>遍历操作(map)：</h3><pre><code>使用map操作可以遍历集合中的每个对象，并对其进行操作，map之后，用.collect(Collectors.toList())会得到操作后的集合。
+</code></pre><h4 id="遍历转换为大写："><a href="#遍历转换为大写：" class="headerlink" title="遍历转换为大写："></a>遍历转换为大写：</h4><pre><code>List&lt;String&gt; output = wordList.stream().
      map(String::toUpperCase).
            collect(Collectors.toList());
-</code></pre><h4 id="1-2、平方数："><a href="#1-2、平方数：" class="headerlink" title="1.2、平方数："></a>1.2、平方数：</h4><pre><code>List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+</code></pre><h4 id="平方数："><a href="#平方数：" class="headerlink" title="平方数："></a>平方数：</h4><pre><code>List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
    List&lt;Integer&gt; squareNums = nums.stream().
          map(n -&gt; n * n).
        collect(Collectors.toList());
-</code></pre><h3 id="2、过滤操作-filter-："><a href="#2、过滤操作-filter-：" class="headerlink" title="2、过滤操作(filter)："></a>2、过滤操作(filter)：</h3><pre><code>使用filter可以对象Stream中进行过滤，通过测试的元素将会留下来生成一个新的Stream。
-</code></pre><h4 id="2-1、得到其中不为空的String"><a href="#2-1、得到其中不为空的String" class="headerlink" title="2.1、得到其中不为空的String"></a>2.1、得到其中不为空的String</h4><pre><code>List&lt;String&gt; filterLists = new ArrayList&lt;&gt;();
+</code></pre><h3 id="过滤操作-filter-："><a href="#过滤操作-filter-：" class="headerlink" title="过滤操作(filter)："></a>过滤操作(filter)：</h3><pre><code>使用filter可以对象Stream中进行过滤，通过测试的元素将会留下来生成一个新的Stream。
+</code></pre><h4 id="得到其中不为空的String"><a href="#得到其中不为空的String" class="headerlink" title="得到其中不为空的String"></a>得到其中不为空的String</h4><pre><code>List&lt;String&gt; filterLists = new ArrayList&lt;&gt;();
 filterLists.add(&quot;&quot;);
 filterLists.add(&quot;a&quot;);
 filterLists.add(&quot;b&quot;);
 List afterFilterLists = filterLists.stream()
        .filter(s -&gt; !s.isEmpty())
         .collect(Collectors.toList());
-</code></pre><h3 id="3、循环操作-forEach"><a href="#3、循环操作-forEach" class="headerlink" title="3、循环操作(forEach):"></a>3、循环操作(forEach):</h3><pre><code>如果只是想对流中的每个对象进行一些自定义的操作，可以使用forEach：
+</code></pre><h3 id="循环操作-forEach"><a href="#循环操作-forEach" class="headerlink" title="循环操作(forEach):"></a>循环操作(forEach):</h3><pre><code>如果只是想对流中的每个对象进行一些自定义的操作，可以使用forEach：
 List&lt;String&gt; forEachLists = new ArrayList&lt;&gt;();
 forEachLists.add(&quot;a&quot;);
 forEachLists.add(&quot;b&quot;);
 forEachLists.add(&quot;c&quot;);
 forEachLists.stream().forEach(s-&gt; System.out.println(s));
-</code></pre><h3 id="4、返回特定的结果集合（limit-skip）："><a href="#4、返回特定的结果集合（limit-skip）：" class="headerlink" title="4、返回特定的结果集合（limit/skip）："></a>4、返回特定的结果集合（limit/skip）：</h3><pre><code>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素:
+</code></pre><h3 id="返回特定的结果集合（limit-skip）："><a href="#返回特定的结果集合（limit-skip）：" class="headerlink" title="返回特定的结果集合（limit/skip）："></a>返回特定的结果集合（limit/skip）：</h3><pre><code>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素:
 List&lt;String&gt; forEachLists = new ArrayList&lt;&gt;();
 forEachLists.add(&quot;a&quot;);
 forEachLists.add(&quot;b&quot;);
@@ -66,8 +66,8 @@ forEachLists.add(&quot;e&quot;);
 forEachLists.add(&quot;f&quot;);
 List&lt;String&gt; limitLists = forEachLists.stream().skip(2).limit(3).collect(Collectors.toList());
 注意skip与limit是有顺序关系的，比如使用skip(2)会跳过集合的前两个，返回的为c、d、e、f,然后调用limit(3)会返回前3个，所以最后返回的c,d,e
-</code></pre><h3 id="5、排序（sort-min-max-distinct）："><a href="#5、排序（sort-min-max-distinct）：" class="headerlink" title="5、排序（sort/min/max/distinct）："></a>5、排序（sort/min/max/distinct）：</h3><pre><code>sort可以对集合中的所有元素进行排序。max，min可以寻找出流中最大或者最小的元素，而distinct可以寻找出不重复的元素：
-</code></pre><h4 id="5-1、对一个集合进行排序："><a href="#5-1、对一个集合进行排序：" class="headerlink" title="5.1、对一个集合进行排序："></a>5.1、对一个集合进行排序：</h4><pre><code>List&lt;Integer&gt; sortLists = new ArrayList&lt;&gt;();
+</code></pre><h3 id="排序（sort-min-max-distinct）："><a href="#排序（sort-min-max-distinct）：" class="headerlink" title="排序（sort/min/max/distinct）："></a>排序（sort/min/max/distinct）：</h3><pre><code>sort可以对集合中的所有元素进行排序。max，min可以寻找出流中最大或者最小的元素，而distinct可以寻找出不重复的元素：
+</code></pre><h4 id="对一个集合进行排序："><a href="#对一个集合进行排序：" class="headerlink" title="对一个集合进行排序："></a>对一个集合进行排序：</h4><pre><code>List&lt;Integer&gt; sortLists = new ArrayList&lt;&gt;();
 sortLists.add(1);
 sortLists.add(4);
 sortLists.add(6);
@@ -75,7 +75,7 @@ sortLists.add(3);
 sortLists.add(2);
 List&lt;Integer&gt; afterSortLists = sortLists.stream().sorted((In1,In2)-&gt;
        In1-In2).collect(Collectors.toList());
-</code></pre><h4 id="5-2、得到其中长度最大的元素："><a href="#5-2、得到其中长度最大的元素：" class="headerlink" title="5.2、得到其中长度最大的元素："></a>5.2、得到其中长度最大的元素：</h4><pre><code>List&lt;String&gt; maxLists = new ArrayList&lt;&gt;();
+</code></pre><h4 id="得到其中长度最大的元素："><a href="#得到其中长度最大的元素：" class="headerlink" title="得到其中长度最大的元素："></a>得到其中长度最大的元素：</h4><pre><code>List&lt;String&gt; maxLists = new ArrayList&lt;&gt;();
 maxLists.add(&quot;a&quot;);
 maxLists.add(&quot;b&quot;);
 maxLists.add(&quot;c&quot;);
@@ -85,24 +85,24 @@ maxLists.add(&quot;f&quot;);
 maxLists.add(&quot;hahaha&quot;);
 int maxLength = maxLists.stream().mapToInt(s-&gt;s.length()).max().getAsInt();
 System.out.println(&quot;字符串长度最长的长度为&quot;+maxLength);
-</code></pre><h4 id="5-3、对一个集合进行查重："><a href="#5-3、对一个集合进行查重：" class="headerlink" title="5.3、对一个集合进行查重："></a>5.3、对一个集合进行查重：</h4><pre><code>List&lt;String&gt; distinctList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="对一个集合进行查重："><a href="#对一个集合进行查重：" class="headerlink" title="对一个集合进行查重："></a>对一个集合进行查重：</h4><pre><code>List&lt;String&gt; distinctList = new ArrayList&lt;&gt;();
 distinctList.add(&quot;a&quot;);
 distinctList.add(&quot;a&quot;);
 distinctList.add(&quot;c&quot;);
 distinctList.add(&quot;d&quot;);
 List&lt;String&gt; afterDistinctList = distinctList.stream().distinct().collect(Collectors.toList());
 其中的distinct()方法能找出stream中元素equal()，即相同的元素，并将相同的去除，上述返回即为a,c,d。
-</code></pre><h3 id="6、匹配-Match方法-："><a href="#6、匹配-Match方法-：" class="headerlink" title="6、匹配(Match方法)："></a>6、匹配(Match方法)：</h3><pre><code>有的时候，我们只需要判断集合中是否全部满足条件，或者判断集合中是否有满足条件的元素，这时候就可以使用match方法：
+</code></pre><h3 id="匹配-Match方法-："><a href="#匹配-Match方法-：" class="headerlink" title="匹配(Match方法)："></a>匹配(Match方法)：</h3><pre><code>有的时候，我们只需要判断集合中是否全部满足条件，或者判断集合中是否有满足条件的元素，这时候就可以使用match方法：
 allMatch：Stream 中全部元素符合传入的 predicate，返回 true
 anyMatch：Stream 中只要有一个元素符合传入的 predicate，返回 true
 noneMatch：Stream 中没有一个元素符合传入的 predicate，返回 true
-</code></pre><h4 id="6-1、判断集合中没有有为‘c’的元素："><a href="#6-1、判断集合中没有有为‘c’的元素：" class="headerlink" title="6.1、判断集合中没有有为‘c’的元素："></a>6.1、判断集合中没有有为‘c’的元素：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="判断集合中没有有为‘c’的元素："><a href="#判断集合中没有有为‘c’的元素：" class="headerlink" title="判断集合中没有有为‘c’的元素："></a>判断集合中没有有为‘c’的元素：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;c&quot;);
 matchList.add(&quot;d&quot;); 
 boolean isExits = matchList.stream().anyMatch(s -&gt; s.equals(&quot;c&quot;));
-</code></pre><h4 id="6-2、判断集合中是否全不为空："><a href="#6-2、判断集合中是否全不为空：" class="headerlink" title="6.2、判断集合中是否全不为空："></a>6.2、判断集合中是否全不为空：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
+</code></pre><h4 id="判断集合中是否全不为空："><a href="#判断集合中是否全不为空：" class="headerlink" title="判断集合中是否全不为空："></a>判断集合中是否全不为空：</h4><pre><code>List&lt;String&gt; matchList = new ArrayList&lt;&gt;();
 matchList.add(&quot;a&quot;);
 matchList.add(&quot;&quot;);
 matchList.add(&quot;a&quot;);
@@ -117,7 +117,7 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
       &lt;hr&gt;
 &lt;p&gt; [toc]&lt;/p&gt;
 &lt;p&gt;Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。&lt;/p&gt;
-&lt;h2 id=&quot;一-流的初始化与转换：&quot;&gt;&lt;a href=&quot;#一-流的初始化与转换：&quot; cl
+&lt;h2 id=&quot;流的初始化与转换：&quot;&gt;&lt;a href=&quot;#流的初始化与转换：&quot; class=
     
     </summary>
     
@@ -133,7 +133,7 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/</id>
     <published>2017-05-11T16:00:00.000Z</published>
-    <updated>2017-05-17T03:23:20.000Z</updated>
+    <updated>2017-05-27T03:06:09.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
 ⌃ Control
@@ -151,7 +151,7 @@ End Fn + →
 ⇥ 右制表符（Tab键）  
 ⇤ 左制表符（Shift+Tab）
 ⎋ Escape (Esc)
-</code></pre><h3 id="一、Editing（编辑）"><a href="#一、Editing（编辑）" class="headerlink" title="一、Editing（编辑）"></a>一、Editing（编辑）</h3><pre><code>⌃Space 基本的代码补全（补全任何类、方法、变量）
+</code></pre><h3 id="Editing（编辑）"><a href="#Editing（编辑）" class="headerlink" title="Editing（编辑）"></a>Editing（编辑）</h3><pre><code>⌃Space 基本的代码补全（补全任何类、方法、变量）
 ⌃⇧Space 智能代码补全（过滤器方法列表和变量的预期类型）
 ⌘⇧↩ 自动结束代码，行末自动添加分号
 ⌘P 显示方法的参数信息
@@ -190,7 +190,7 @@ End Fn + →
 ⌘⇧+ 展开所以代码块
 ⌘⇧- 折叠所有代码块
 ⌘W 关闭活动的编辑器选项卡
-</code></pre><h3 id="二、Search-Replace（查询-替换）"><a href="#二、Search-Replace（查询-替换）" class="headerlink" title="二、Search/Replace（查询/替换）"></a>二、Search/Replace（查询/替换）</h3><pre><code>Double ⇧ 查询任何东西
+</code></pre><h3 id="Search-Replace（查询-替换）"><a href="#Search-Replace（查询-替换）" class="headerlink" title="Search/Replace（查询/替换）"></a>Search/Replace（查询/替换）</h3><pre><code>Double ⇧ 查询任何东西
 ⌘F 文件内查找
 ⌘G 查找模式下，向下查找
 ⌘⇧G 查找模式下，向上查找
@@ -199,17 +199,17 @@ End Fn + →
 ⌘⇧R 全局替换（根据路径）
 ⌘⇧S 查询结构（Ultimate Edition 版专用，需要在Keymap中设置）
 ⌘⇧M 替换结构（Ultimate Edition 版专用，需要在Keymap中设置）
-</code></pre><h3 id="三、Usage-Search（使用查询）"><a href="#三、Usage-Search（使用查询）" class="headerlink" title="三、Usage Search（使用查询）"></a>三、Usage Search（使用查询）</h3><pre><code>⌥F7 / ⌘F7 在文件中查找用法 / 在类中查找用法
+</code></pre><h3 id="Usage-Search（使用查询）"><a href="#Usage-Search（使用查询）" class="headerlink" title="Usage Search（使用查询）"></a>Usage Search（使用查询）</h3><pre><code>⌥F7 / ⌘F7 在文件中查找用法 / 在类中查找用法
 ⌘⇧F7 在文件中突出显示的用法
 ⌘⌥F7 显示用法
-</code></pre><h3 id="四、Compile-and-Run（编译和运行）"><a href="#四、Compile-and-Run（编译和运行）" class="headerlink" title="四、Compile and Run（编译和运行）"></a>四、Compile and Run（编译和运行）</h3><pre><code>⌘F9 编译Project
+</code></pre><h3 id="Compile-and-Run（编译和运行）"><a href="#Compile-and-Run（编译和运行）" class="headerlink" title="Compile and Run（编译和运行）"></a>Compile and Run（编译和运行）</h3><pre><code>⌘F9 编译Project
 ⌘⇧F9 编译选择的文件、包或模块
 ⌃⌥R 弹出 Run 的可选择菜单
 ⌃⌥D 弹出 Debug 的可选择菜单
 ⌃R 运行
 ⌃D 调试
 ⌃⇧R, ⌃⇧D 从编辑器运行上下文环境配置
-</code></pre><h3 id="五、Debugging（调试）"><a href="#五、Debugging（调试）" class="headerlink" title="五、Debugging（调试）"></a>五、Debugging（调试）</h3><pre><code>F8 进入下一步，如果当前行断点是一个方法，则不进入当前方法体内
+</code></pre><h3 id="Debugging（调试）"><a href="#Debugging（调试）" class="headerlink" title="Debugging（调试）"></a>Debugging（调试）</h3><pre><code>F8 进入下一步，如果当前行断点是一个方法，则不进入当前方法体内
 F7 进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中
 ⇧F7 智能步入，断点所在行上有多个方法调用，会弹出进入哪个方法
 ⇧F8 跳出
@@ -218,7 +218,7 @@ F7 进入下一步，如果当前行断点是一个方法，则进入当前方�
 ⌘⌥R 恢复程序运行，如果该断点下面代码还有断点则停在下一个断点上
 ⌘F8 切换断点（若光标当前行有断点则取消断点，没有则加上断点）
 ⌘⇧F8 查看断点信息
-</code></pre><h3 id="六、Navigation（导航）"><a href="#六、Navigation（导航）" class="headerlink" title="六、Navigation（导航）"></a>六、Navigation（导航）</h3><pre><code>⌘O 查找类文件
+</code></pre><h3 id="Navigation（导航）"><a href="#Navigation（导航）" class="headerlink" title="Navigation（导航）"></a>Navigation（导航）</h3><pre><code>⌘O 查找类文件
 ⌘⇧O 查找所有类型文件、打开文件、打开目录，打开目录需要在输入的内容前面或后面加一个反斜杠/
 ⌘⌥O 前往指定的变量 / 方法
 ⌃← / ⌃→ 左右切换打开的编辑tab页
@@ -249,7 +249,7 @@ F3选中文件/文件夹/代码行，添加/取消书签
 ⌥F3 选中文件/文件夹/代码行，使用助记符添加/取消书签
 ⌃0...⌃9 定位到对应数值的书签位置
 ⌘F3 显示所有书签
-</code></pre><h3 id="七、Refactoring（重构）"><a href="#七、Refactoring（重构）" class="headerlink" title="七、Refactoring（重构）"></a>七、Refactoring（重构）</h3><pre><code>F5 复制文件到指定目录
+</code></pre><h3 id="Refactoring（重构）"><a href="#Refactoring（重构）" class="headerlink" title="Refactoring（重构）"></a>Refactoring（重构）</h3><pre><code>F5 复制文件到指定目录
 F6 移动文件到指定目录
 ⌘⌫ 在文件上为安全删除文件，弹出确认框
 ⇧F6 重命名文件
@@ -260,13 +260,13 @@ F6 移动文件到指定目录
 ⌘⌥F 提取字段
 ⌘⌥C 提取常量
 ⌘⌥P 提取参数
-</code></pre><h3 id="八、VCS-Local-History（版本控制-本地历史记录）"><a href="#八、VCS-Local-History（版本控制-本地历史记录）" class="headerlink" title="八、VCS/Local History（版本控制/本地历史记录）"></a>八、VCS/Local History（版本控制/本地历史记录）</h3><pre><code>⌘K 提交代码到版本控制器
+</code></pre><h3 id="VCS-Local-History（版本控制-本地历史记录）"><a href="#VCS-Local-History（版本控制-本地历史记录）" class="headerlink" title="VCS/Local History（版本控制/本地历史记录）"></a>VCS/Local History（版本控制/本地历史记录）</h3><pre><code>⌘K 提交代码到版本控制器
 ⌘T 从版本控制器更新代码
 ⌥⇧C 查看最近的变更记录
 ⌃C 快速弹出版本控制器操作面板
-</code></pre><h3 id="九、Live-Templates（动态代码模板）"><a href="#九、Live-Templates（动态代码模板）" class="headerlink" title="九、Live Templates（动态代码模板）"></a>九、Live Templates（动态代码模板）</h3><pre><code>⌘⌥J 弹出模板选择窗口，将选定的代码使用动态模板包住
+</code></pre><h3 id="Live-Templates（动态代码模板）"><a href="#Live-Templates（动态代码模板）" class="headerlink" title="Live Templates（动态代码模板）"></a>Live Templates（动态代码模板）</h3><pre><code>⌘⌥J 弹出模板选择窗口，将选定的代码使用动态模板包住
 ⌘J 插入自定义动态代码模板
-</code></pre><h3 id="十、General（通用）"><a href="#十、General（通用）" class="headerlink" title="十、General（通用）"></a>十、General（通用）</h3><pre><code>⌘1...⌘9 打开相应编号的工具窗口
+</code></pre><h3 id="General（通用）"><a href="#General（通用）" class="headerlink" title="General（通用）"></a>General（通用）</h3><pre><code>⌘1...⌘9 打开相应编号的工具窗口
 ⌘S 保存所有
 ⌘⌥Y 同步、刷新
 ⌃⌘F 切换全屏模式
@@ -278,9 +278,8 @@ F6 移动文件到指定目录
 ⌘; 打开项目结构对话框
 ⇧⌘A 查找动作（可设置相关选项）
 ⌃⇥ 编辑窗口标签和工具窗口之间切换（如果在切换的过程加按上delete，则是关闭对应选中的窗口）
-</code></pre><h3 id="十一、Other（一些官方文档上没有体现的快捷键）"><a href="#十一、Other（一些官方文档上没有体现的快捷键）" class="headerlink" title="十一、Other（一些官方文档上没有体现的快捷键）"></a>十一、Other（一些官方文档上没有体现的快捷键）</h3><pre><code>⌘⇧8 竖编辑模式
-</code></pre><p>####导航</p>
-<pre><code>⌘O 查找类文件 Ctrl + N
+</code></pre><h3 id="Other（一些官方文档上没有体现的快捷键）"><a href="#Other（一些官方文档上没有体现的快捷键）" class="headerlink" title="Other（一些官方文档上没有体现的快捷键）"></a>Other（一些官方文档上没有体现的快捷键）</h3><pre><code>⌘⇧8 竖编辑模式
+</code></pre><h4 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h4><pre><code>⌘O 查找类文件 Ctrl + N
 
 ⌘⌥O 前往指定的变量 / 方法 Ctrl + Shift + Alt + N
 
@@ -307,8 +306,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘⌥U 显示类UML图
 
 ⌃J 查看注释
-</code></pre><p>###编辑</p>
-<pre><code>⌥⌦ 删除到单词的末尾（⌦键为Fn+Delete）
+</code></pre><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><pre><code>⌥⌦ 删除到单词的末尾（⌦键为Fn+Delete）
 
 ⌥⌫ 删除到单词的开头
 
@@ -331,8 +329,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘N, ⌃↩, ⌃N 生成代码（getter、setter、构造函数、hashCode/equals,toString）
 
 ⌘P 显示方法的参数信息
-</code></pre><p>###查找</p>
-<pre><code>Double⇧ 查找任何东西
+</code></pre><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><pre><code>Double⇧ 查找任何东西
 
 ⌘⇧F 全局查找（根据路径）
 
@@ -341,8 +338,7 @@ F4 / ⌘↓ 编辑/查看代码源
 ⌘G 查找模式下，向下查找
 
 ⌘⇧G 查找模式下，向上查找
-</code></pre><p>###导航</p>
-<pre><code>⌘⌥B 跳转到接口的实现
+</code></pre><h3 id="导航-1"><a href="#导航-1" class="headerlink" title="导航"></a>导航</h3><pre><code>⌘⌥B 跳转到接口的实现
 
 ⌘U 查看接口定义
 
@@ -375,8 +371,7 @@ F3选中文件/文件夹/代码行，添加/取消书签
 ⌥F1 显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择(如在代码编辑窗口可以选择显示该文件的Finder)
 
 ⌘F12 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选（可用于搜索类中的方法）
-</code></pre><p>###通用</p>
-<pre><code>⌃⌘F 切换全屏模式
+</code></pre><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><pre><code>⌃⌘F 切换全屏模式
 </code></pre>]]></content>
     
     <summary type="html">
@@ -397,15 +392,38 @@ F3选中文件/文件夹/代码行，添加/取消书签
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/04/23/secode/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/04/23/secode/</id>
     <published>2017-04-22T16:00:00.000Z</published>
-    <updated>2017-04-23T05:56:45.000Z</updated>
+    <updated>2017-05-27T03:10:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>  由于自己对hexo不是很熟悉，所以在这里将hexo的使用过程和一些其他的心得写下来，希望对其他人有用。</p>
-]]></content>
+<p> ## </p>
+<ul>
+<li><p>清理 类似于maven的命令  mvn clean</p>
+<p>hexo clean</p>
+<ul>
+<li>生成页面  类似于maven中的mvn install</li>
+</ul>
+</li>
+</ul>
+<pre><code>hexo generate
+</code></pre><ul>
+<li>推到远程</li>
+</ul>
+<pre><code>hexo deploy
+</code></pre><ul>
+<li>本地观看实现的代码</li>
+</ul>
+<pre><code>hexo server 
+</code></pre>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;  由于自己对hexo不是很熟悉，所以在这里将hexo的使用过程和一些其他的心得写下来，希望对其他人有用。&lt;/p&gt;
-
+&lt;p&gt; ## &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;清理 类似于maven的命令  mvn clean&lt;/p&gt;
+&lt;p&gt;hexo clean&lt;/p&gt;
+&lt;ul&gt;
+&lt;l
     
     </summary>
     
