@@ -53,10 +53,10 @@ exit;
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/</id>
     <published>2017-05-25T16:00:00.000Z</published>
-    <updated>2017-05-27T03:05:03.000Z</updated>
+    <updated>2017-06-06T03:26:51.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<p> [toc]</p>
+<p>[TOC]</p>
 <p>Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。</p>
 <h2 id="流的初始化与转换："><a href="#流的初始化与转换：" class="headerlink" title="流的初始化与转换："></a>流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
 <h3 id="始化一个流："><a href="#始化一个流：" class="headerlink" title="始化一个流："></a>始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
@@ -148,9 +148,9 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     <summary type="html">
     
       &lt;hr&gt;
-&lt;p&gt; [toc]&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。&lt;/p&gt;
-&lt;h2 id=&quot;流的初始化与转换：&quot;&gt;&lt;a href=&quot;#流的初始化与转换：&quot; class=
+&lt;h2 id=&quot;流的初始化与转换：&quot;&gt;&lt;a href=&quot;#流的初始化与转换：&quot; class=&quot;
     
     </summary>
     
@@ -166,9 +166,10 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/</id>
     <published>2017-05-11T16:00:00.000Z</published>
-    <updated>2017-05-27T03:17:06.000Z</updated>
+    <updated>2017-06-06T03:26:28.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
+    <content type="html"><![CDATA[<p>[TOC]</p>
+<h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
 ⌃ Control
 ↩︎ Return/Enter
 ⌫ Delete
@@ -405,11 +406,13 @@ F3选中文件/文件夹/代码行，添加/取消书签
 
 ⌘F12 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选（可用于搜索类中的方法）
 </code></pre><h4 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h4><pre><code>⌃⌘F 切换全屏模式
-</code></pre>]]></content>
+</code></pre><p>​    </p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Mac键盘符号和修饰键说明&quot;&gt;&lt;a href=&quot;#Mac键盘符号和修饰键说明&quot; class=&quot;headerlink&quot; title=&quot;Mac键盘符号和修饰键说明&quot;&gt;&lt;/a&gt;Mac键盘符号和修饰键说明&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;⌘ Command⇧ Shift⌥ 
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;Mac键盘符号和修饰键说明&quot;&gt;&lt;a href=&quot;#Mac键盘符号和修饰键说明&quot; class=&quot;headerlink&quot; title=&quot;Mac键盘符号和修饰键说明&quot;&gt;&lt;/a&gt;Mac键盘符号和修饰键说明&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;⌘ Com
     
     </summary>
     
