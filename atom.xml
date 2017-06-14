@@ -5,7 +5,7 @@
   <link href="/learn.github.io/atom.xml" rel="self"/>
   
   <link href="http://coder-mr-yang.github.io/learn.github.io/"/>
-  <updated>2017-05-31T07:39:59.000Z</updated>
+  <updated>2017-06-14T03:05:57.000Z</updated>
   <id>http://coder-mr-yang.github.io/learn.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/06/14/maven/"/>
+    <id>http://coder-mr-yang.github.io/learn.github.io/2017/06/14/maven/</id>
+    <published>2017-06-14T03:01:21.000Z</published>
+    <updated>2017-06-14T03:05:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: maven.test.skip和skipTests的区别</div><div class="line">date: 2017<span class="string">-06</span><span class="string">-14</span></div><div class="line">categories: java</div><div class="line"><span class="keyword">tags:</span> maven</div></pre></td></tr></table></figure>
+<ul>
+<li><p>maven.test.skip和skipTests的区别</p>
+<p>-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。</p>
+<p>-Dmaven.test.skip=true，不执行测试用例，也不编译测试用例类。</p>
+<p>不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight subunit&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>远程连接MySQL</title>
@@ -472,7 +498,7 @@ F3选中文件/文件夹/代码行，添加/取消书签
     <link href="http://coder-mr-yang.github.io/learn.github.io/2016/01/13/first/"/>
     <id>http://coder-mr-yang.github.io/learn.github.io/2016/01/13/first/</id>
     <published>2016-01-12T16:00:00.000Z</published>
-    <updated>2017-06-08T07:00:07.000Z</updated>
+    <updated>2017-06-14T03:03:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>这是第一次写笔记</p>
 ]]></content>
