@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>康仔的生活</title>
   
-  <link href="/learn.github.io/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="http://coder-mr-yang.github.io/learn.github.io/"/>
-  <updated>2017-06-14T03:05:57.000Z</updated>
-  <id>http://coder-mr-yang.github.io/learn.github.io/</id>
+  <link href="https://littlebaiyang.github.io/"/>
+  <updated>2018-07-11T01:55:10.342Z</updated>
+  <id>https://littlebaiyang.github.io/</id>
   
   <author>
     <name>杨康</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title></title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/06/14/maven/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/06/14/maven/</id>
-    <published>2017-06-14T03:01:21.000Z</published>
-    <updated>2017-06-14T03:05:57.000Z</updated>
+    <link href="https://littlebaiyang.github.io/2018/07/11/maven/"/>
+    <id>https://littlebaiyang.github.io/2018/07/11/maven/</id>
+    <published>2018-07-11T01:55:10.342Z</published>
+    <updated>2018-07-11T01:55:10.342Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: maven.test.skip和skipTests的区别</div><div class="line">date: 2017<span class="string">-06</span><span class="string">-14</span></div><div class="line">categories: java</div><div class="line"><span class="keyword">tags:</span> maven</div></pre></td></tr></table></figure>
 <ul>
@@ -43,10 +43,10 @@
   
   <entry>
     <title>远程连接MySQL</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/31/remote-Mysql/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/31/remote-Mysql/</id>
+    <link href="https://littlebaiyang.github.io/2017/05/31/remote-Mysql/"/>
+    <id>https://littlebaiyang.github.io/2017/05/31/remote-Mysql/</id>
     <published>2017-05-30T16:00:00.000Z</published>
-    <updated>2017-05-31T07:39:59.000Z</updated>
+    <updated>2018-07-11T01:55:10.341Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一步：修改配置文件的端口绑定"><a href="#第一步：修改配置文件的端口绑定" class="headerlink" title="第一步：修改配置文件的端口绑定"></a>第一步：修改配置文件的端口绑定</h2><p>打开的目录可能会根据MySQL的版本稍有不同，可以先尝试打开/etc/mysql/my.cnf这个配置文件，若该文件不存在或文件内容为空，则尝试下面的文件路径。</p>
 <pre><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -67,19 +67,19 @@ exit;
     
     </summary>
     
-      <category term="MySQL" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/MySQL/"/>
+      <category term="MySQL" scheme="https://littlebaiyang.github.io/categories/MySQL/"/>
     
     
-      <category term="MySQL" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/MySQL/"/>
+      <category term="MySQL" scheme="https://littlebaiyang.github.io/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>java Stream 的用法</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/26/Stream/</id>
+    <link href="https://littlebaiyang.github.io/2017/05/26/Stream/"/>
+    <id>https://littlebaiyang.github.io/2017/05/26/Stream/</id>
     <published>2017-05-25T16:00:00.000Z</published>
-    <updated>2017-10-30T11:16:28.852Z</updated>
+    <updated>2018-07-11T01:55:10.341Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>[TOC]</p>
@@ -180,19 +180,19 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     
     </summary>
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/categories/java/"/>
     
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>IntelliJ IDEA For Mac 快捷键 (一)</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/05/12/idea-for-mac/</id>
+    <link href="https://littlebaiyang.github.io/2017/05/12/idea-for-mac/"/>
+    <id>https://littlebaiyang.github.io/2017/05/12/idea-for-mac/</id>
     <published>2017-05-11T16:00:00.000Z</published>
-    <updated>2017-06-06T03:26:28.000Z</updated>
+    <updated>2018-07-11T01:55:10.341Z</updated>
     
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
@@ -442,19 +442,19 @@ F3选中文件/文件夹/代码行，添加/取消书签
     
     </summary>
     
-      <category term="idea" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/idea/"/>
+      <category term="idea" scheme="https://littlebaiyang.github.io/categories/idea/"/>
     
     
-      <category term="idea" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/idea/"/>
+      <category term="idea" scheme="https://littlebaiyang.github.io/tags/idea/"/>
     
   </entry>
   
   <entry>
     <title>如何使用hexo</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2017/04/23/secode/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2017/04/23/secode/</id>
+    <link href="https://littlebaiyang.github.io/2017/04/23/secode/"/>
+    <id>https://littlebaiyang.github.io/2017/04/23/secode/</id>
     <published>2017-04-22T16:00:00.000Z</published>
-    <updated>2017-05-27T03:27:12.000Z</updated>
+    <updated>2018-07-11T01:55:10.340Z</updated>
     
     <content type="html"><![CDATA[<p>  由于自己对hexo不是很熟悉，所以在这里将hexo的使用过程和一些其他的心得写下来，希望对其他人有用。</p>
 <ul>
@@ -486,19 +486,19 @@ F3选中文件/文件夹/代码行，添加/取消书签
     
     </summary>
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/categories/java/"/>
     
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>第一次发布博客</title>
-    <link href="http://coder-mr-yang.github.io/learn.github.io/2016/01/13/first/"/>
-    <id>http://coder-mr-yang.github.io/learn.github.io/2016/01/13/first/</id>
+    <link href="https://littlebaiyang.github.io/2016/01/13/first/"/>
+    <id>https://littlebaiyang.github.io/2016/01/13/first/</id>
     <published>2016-01-12T16:00:00.000Z</published>
-    <updated>2017-06-14T03:03:58.000Z</updated>
+    <updated>2018-07-11T01:55:10.342Z</updated>
     
     <content type="html"><![CDATA[<p>这是第一次写笔记</p>
 ]]></content>
@@ -510,10 +510,10 @@ F3选中文件/文件夹/代码行，添加/取消书签
     
     </summary>
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/categories/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/categories/java/"/>
     
     
-      <category term="java" scheme="http://coder-mr-yang.github.io/learn.github.io/tags/java/"/>
+      <category term="java" scheme="https://littlebaiyang.github.io/tags/java/"/>
     
   </entry>
   
