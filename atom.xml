@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://littlebaiyang.github.io/"/>
-  <updated>2018-07-11T01:55:10.342Z</updated>
+  <updated>2018-07-11T05:06:15.301Z</updated>
   <id>https://littlebaiyang.github.io/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://littlebaiyang.github.io/2018/07/11/maven/"/>
-    <id>https://littlebaiyang.github.io/2018/07/11/maven/</id>
-    <published>2018-07-11T01:55:10.342Z</published>
-    <updated>2018-07-11T01:55:10.342Z</updated>
+    <title>maven.test.skip和skipTests的区别</title>
+    <link href="https://littlebaiyang.github.io/2017/06/14/maven/"/>
+    <id>https://littlebaiyang.github.io/2017/06/14/maven/</id>
+    <published>2017-06-13T16:00:00.000Z</published>
+    <updated>2018-07-11T05:06:15.301Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: maven.test.skip和skipTests的区别</div><div class="line">date: 2017<span class="string">-06</span><span class="string">-14</span></div><div class="line">categories: java</div><div class="line"><span class="keyword">tags:</span> maven</div></pre></td></tr></table></figure>
-<ul>
+    <content type="html"><![CDATA[<ul>
 <li><p>maven.test.skip和skipTests的区别</p>
 <p>-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。</p>
 <p>-Dmaven.test.skip=true，不执行测试用例，也不编译测试用例类。</p>
@@ -34,10 +33,17 @@
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight subunit&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;maven.test.skip和skipTests的区别&lt;/p&gt;
+&lt;p&gt;-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。&lt;/p&gt;
+&lt;p&gt;-Dmaven.test.skip=true
     
     </summary>
     
+      <category term="java" scheme="https://littlebaiyang.github.io/categories/java/"/>
+    
+    
+      <category term="maven" scheme="https://littlebaiyang.github.io/tags/maven/"/>
     
   </entry>
   
@@ -192,7 +198,7 @@ boolean isNotEmpty = matchList.stream().noneMatch(s -&gt; s.isEmpty());
     <link href="https://littlebaiyang.github.io/2017/05/12/idea-for-mac/"/>
     <id>https://littlebaiyang.github.io/2017/05/12/idea-for-mac/</id>
     <published>2017-05-11T16:00:00.000Z</published>
-    <updated>2018-07-11T01:55:10.341Z</updated>
+    <updated>2018-07-11T05:02:33.110Z</updated>
     
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
