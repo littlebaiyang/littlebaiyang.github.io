@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://littlebaiyang.github.io">
-  <title>Archives: 2017/5 | 杨小白</title>
+  <title>spring 源码分析--2：启动 | 杨小白</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人的学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="杨小白">
-<meta property="og:url" content="https://littlebaiyang.github.io/archives/2017/05/index.html">
+  <meta name="description" content="3.执行启动流程
+接下来我们来看启动的主题代码，如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring 源码分析--2：启动">
+<meta property="og:url" content="https://littlebaiyang.github.io/2018/07/12/springboot2/index.html">
 <meta property="og:site_name" content="杨小白">
-<meta property="og:description" content="个人的学习笔记">
+<meta property="og:description" content="3.执行启动流程
+接下来我们来看启动的主题代码，如下：">
+<meta property="og:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1695556135,2938104612&fm=27&gp=0.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1ft726ibvlfj30ib0eeq57.jpg">
+<meta property="og:updated_time" content="2018-07-12T08:23:28.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="杨小白">
-<meta name="twitter:description" content="个人的学习笔记">
+<meta name="twitter:title" content="spring 源码分析--2：启动">
+<meta name="twitter:description" content="3.执行启动流程
+接下来我们来看启动的主题代码，如下：">
+<meta name="twitter:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1695556135,2938104612&fm=27&gp=0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="杨小白" type="application/atom+xml">
   
@@ -158,140 +165,316 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-springboot2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spring 源码分析--2：启动
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/springboot2/" class="archive-article-date">
+  	<time datetime="2018-07-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1695556135,2938104612&amp;fm=27&amp;gp=0.jpg" alt=""></p>
+<h2>3.执行启动流程</h2>
+<p>接下来我们来看启动的主题代码，如下：
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">		StopWatch stopWatch = <span class="keyword">new</span> StopWatch();</div><div class="line">		stopWatch.start();</div><div class="line">		ConfigurableApplicationContext context = <span class="keyword">null</span>;</div><div class="line">		Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">		configureHeadlessProperty();</div><div class="line">		SpringApplicationRunListeners listeners = getRunListeners(args);</div><div class="line">		listeners.starting();</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			ApplicationArguments applicationArguments = <span class="keyword">new</span> DefaultApplicationArguments(</div><div class="line">					args);</div><div class="line">			ConfigurableEnvironment environment = prepareEnvironment(listeners,</div><div class="line">					applicationArguments);</div><div class="line">			configureIgnoreBeanInfo(environment);</div><div class="line">			Banner printedBanner = printBanner(environment);</div><div class="line">			context = createApplicationContext();</div><div class="line">			exceptionReporters = getSpringFactoriesInstances(</div><div class="line">					SpringBootExceptionReporter.class,</div><div class="line">					<span class="keyword">new</span> Class[] &#123; ConfigurableApplicationContext.class &#125;, context);</div><div class="line">			prepareContext(context, environment, listeners, applicationArguments,</div><div class="line">					printedBanner);</div><div class="line">			refreshContext(context);</div><div class="line">			afterRefresh(context, applicationArguments);</div><div class="line">			stopWatch.stop();</div><div class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;</div><div class="line">				<span class="keyword">new</span> StartupInfoLogger(<span class="keyword">this</span>.mainApplicationClass)</div><div class="line">						.logStarted(getApplicationLog(), stopWatch);</div><div class="line">			&#125;</div><div class="line">			listeners.started(context);</div><div class="line">			callRunners(context, applicationArguments);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">catch</span> (Throwable ex) &#123;</div><div class="line">			handleRunFailure(context, ex, exceptionReporters, listeners);</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(ex);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			listeners.running(context);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">catch</span> (Throwable ex) &#123;</div><div class="line">			handleRunFailure(context, ex, exceptionReporters, <span class="keyword">null</span>);</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(ex);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> context;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>代码中的前几行的StopWatch类就是计算线程的执行时间，又兴趣的话可以看一下：<a href="https://www.cnblogs.com/kaituorensheng/p/7105639.html" target="_blank" rel="external">链接</a></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ConfigurableApplicationContext context = <span class="keyword">null</span>;</div><div class="line">Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">configureHeadlessProperty();</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SYSTEM_PROPERTY_JAVA_AWT_HEADLESS = <span class="string">"java.awt.headless"</span>;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">configureHeadlessProperty</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.setProperty(SYSTEM_PROPERTY_JAVA_AWT_HEADLESS, System.getProperty(</div><div class="line">				SYSTEM_PROPERTY_JAVA_AWT_HEADLESS, Boolean.toString(<span class="keyword">this</span>.headless)));</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码初始化了部分数据，并且查看系统的环境变量是否存在：java.awt.headless，不存在赋值为true(这里的值是初始化，也可以在代码中赋初始值 )，放进去。</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SpringApplicationRunListeners listeners = getRunListeners(args);</div><div class="line">listeners.starting();</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> SpringApplicationRunListeners <span class="title">getRunListeners</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	Class&lt;?&gt;[] types = <span class="keyword">new</span> Class&lt;?&gt;[] &#123; SpringApplication.class, String[].class &#125;;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> SpringApplicationRunListeners(logger, getSpringFactoriesInstances(</div><div class="line">			SpringApplicationRunListener.class, types, <span class="keyword">this</span>, args));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Run Listeners</div><div class="line">org.springframework.boot.SpringApplicationRunListener=\</div><div class="line">org.springframework.boot.context.event.EventPublishingRunListener</div></pre></td></tr></table></figure></p>
+<p>从上面的spring.factories中可以看出这里启动的是EventPublishingRunListener，并且从以下的start代码可以看得出来，他对所有的初始化的listener进行广播了ApplicationStartingEvent事件。而初始化的10个listener对不同的事件有不同的支持：</p>
+<table>
+<thead>
+<tr>
+<th>初始化的listener</th>
+<th>支持的事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClearCachesApplicationListener</td>
+<td>ContextRefreshedEvent</td>
+</tr>
+<tr>
+<td>ParentContextCloserApplicationListener</td>
+<td>ParentContextAvailableEvent</td>
+</tr>
+<tr>
+<td>FileEncodingApplicationListener</td>
+<td>ApplicationEnvironmentPreparedEvent</td>
+</tr>
+<tr>
+<td>AnsiOutputApplicationListener</td>
+<td>ApplicationEnvironmentPreparedEvent</td>
+</tr>
+<tr>
+<td>ConfigFileApplicationListener</td>
+<td>ApplicationEnvironmentPreparedEvent 和ApplicationPreparedEvent</td>
+</tr>
+<tr>
+<td>DelegatingApplicationListener</td>
+<td>ApplicationEnvironmentPreparedEvent和其他的event</td>
+</tr>
+<tr>
+<td>ClasspathLoggingApplicationListener</td>
+<td>ApplicationEnvironmentPreparedEvent 和ApplicationFailedEvent 打debug日志</td>
+</tr>
+<tr>
+<td>LoggingApplicationListener</td>
+<td>ApplicationStartingEvent、ApplicationEnvironmentPreparedEvent、ApplicationPreparedEvent、ContextClosedEvent的子类、ApplicationFailedEvent     主要进行log系统的操作</td>
+</tr>
+<tr>
+<td>LiquibaseServiceLocatorApplicationListener</td>
+<td>ApplicationStartingEvent</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>之后操作到了咱们进行详细的说明。</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">listeners.starting();</div></pre></td></tr></table></figure></p>
+<p>最先进入的是LoggingApplicationListener，代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationStartingEvent) &#123;</div><div class="line">			onApplicationStartingEvent((ApplicationStartingEvent) event);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</div><div class="line">			onApplicationEnvironmentPreparedEvent(</div><div class="line">					(ApplicationEnvironmentPreparedEvent) event);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationPreparedEvent) &#123;</div><div class="line">			onApplicationPreparedEvent((ApplicationPreparedEvent) event);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextClosedEvent &amp;&amp; ((ContextClosedEvent) event)</div><div class="line">				.getApplicationContext().getParent() == <span class="keyword">null</span>) &#123;</div><div class="line">			onContextClosedEvent();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationFailedEvent) &#123;</div><div class="line">			onApplicationFailedEvent();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onApplicationStartingEvent</span><span class="params">(ApplicationStartingEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.loggingSystem = LoggingSystem</div><div class="line">				.get(event.getSpringApplication().getClassLoader());</div><div class="line">		<span class="keyword">this</span>.loggingSystem.beforeInitialize();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>log系统初始化之前的操作。接下来是DelegatingApplicationListener，代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</div><div class="line">			List&lt;ApplicationListener&lt;ApplicationEvent&gt;&gt; delegates = getListeners(</div><div class="line">					((ApplicationEnvironmentPreparedEvent) event).getEnvironment());</div><div class="line">			<span class="keyword">if</span> (delegates.isEmpty()) &#123;</div><div class="line">				<span class="keyword">return</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">this</span>.multicaster = <span class="keyword">new</span> SimpleApplicationEventMulticaster();</div><div class="line">			<span class="keyword">for</span> (ApplicationListener&lt;ApplicationEvent&gt; listener : delegates) &#123;</div><div class="line">				<span class="keyword">this</span>.multicaster.addApplicationListener(listener);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.multicaster != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">this</span>.multicaster.multicastEvent(event);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>由于本地变量multicaster为null，所以直接跳出。（作用把Listener转发给配置的这些class处理，这样可以支持外围代码不去写spring.factories中的org.springframework.context.ApplicationListener相关配置，保持springboot原来代码的稳定），最后是LiquibaseServiceLocatorApplicationListener，它的作用是 如果存在，则使用springboot相关的版本进行替代</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationStartingEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (ClassUtils.isPresent(<span class="string">"liquibase.servicelocator.CustomResolverServiceLocator"</span>,</div><div class="line">				event.getSpringApplication().getClassLoader())) &#123;</div><div class="line">			<span class="keyword">new</span> LiquibasePresent().replaceServiceLocator();</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>我这里也是直接跳过。接下来又会回到SpringApplication的文件中</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ApplicationArguments applicationArguments = <span class="keyword">new</span> DefaultApplicationArguments(</div><div class="line">					args);</div><div class="line">ConfigurableEnvironment environment = prepareEnvironment(listeners,</div><div class="line">					applicationArguments);</div><div class="line">configureIgnoreBeanInfo(environment);</div><div class="line">Banner printedBanner = printBanner(environment);</div></pre></td></tr></table></figure></p>
+<p>初始化参数，之后进入prepareEnvironment，代码如下</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> ConfigurableEnvironment <span class="title">prepareEnvironment</span><span class="params">(</span></span></div><div class="line">			SpringApplicationRunListeners listeners,</div><div class="line">			ApplicationArguments applicationArguments) &#123;</div><div class="line">		<span class="comment">// Create and configure the environment</span></div><div class="line">		ConfigurableEnvironment environment = getOrCreateEnvironment();</div><div class="line">		configureEnvironment(environment, applicationArguments.getSourceArgs());</div><div class="line">		listeners.environmentPrepared(environment);</div><div class="line">		bindToSpringApplication(environment);</div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.webApplicationType == WebApplicationType.NONE) &#123;</div><div class="line">			environment = <span class="keyword">new</span> EnvironmentConverter(getClassLoader())</div><div class="line">					.convertToStandardEnvironmentIfNecessary(environment);</div><div class="line">		&#125;</div><div class="line">		ConfigurationPropertySources.attach(environment);</div><div class="line">		<span class="keyword">return</span> environment;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">private</span> ConfigurableEnvironment <span class="title">getOrCreateEnvironment</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.environment != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.environment;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.webApplicationType == WebApplicationType.SERVLET) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">new</span> StandardServletEnvironment();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> StandardEnvironment();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到，显示获取了本地的环境，如果没有就判断当前的web环境，如果是SERVLET就返回StandardServletEnvironment，否则返回StandardEnvironment。之后是配置这个环境，代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configureEnvironment</span><span class="params">(ConfigurableEnvironment environment,</span></span></div><div class="line">			String[] args) &#123;</div><div class="line">		configurePropertySources(environment, args);</div><div class="line">		configureProfiles(environment, args);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>显示配置参数之后是配置profile。之后的*listeners.environmentPrepared(environment);*则进行一些类的listener的响应。最新进入ConfigFileApplicationListener：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</div><div class="line">			onApplicationEnvironmentPreparedEvent(</div><div class="line">					(ApplicationEnvironmentPreparedEvent) event);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationPreparedEvent) &#123;</div><div class="line">			onApplicationPreparedEvent(event);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onApplicationEnvironmentPreparedEvent</span><span class="params">(</span></span></div><div class="line">			ApplicationEnvironmentPreparedEvent event) &#123;</div><div class="line">		List&lt;EnvironmentPostProcessor&gt; postProcessors = loadPostProcessors();</div><div class="line">		postProcessors.add(<span class="keyword">this</span>);</div><div class="line">		AnnotationAwareOrderComparator.sort(postProcessors);</div><div class="line">		<span class="keyword">for</span> (EnvironmentPostProcessor postProcessor : postProcessors) &#123;</div><div class="line">			postProcessor.postProcessEnvironment(event.getEnvironment(),</div><div class="line">					event.getSpringApplication());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function">List&lt;EnvironmentPostProcessor&gt; <span class="title">loadPostProcessors</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> SpringFactoriesLoader.loadFactories(EnvironmentPostProcessor.class,</div><div class="line">				getClass().getClassLoader());</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>首先loadPostProcessors获取的资源如下：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Environment Post Processors</div><div class="line">org.springframework.boot.env.EnvironmentPostProcessor=\</div><div class="line">org.springframework.boot.cloud.CloudFoundryVcapEnvironmentPostProcessor,\</div><div class="line">org.springframework.boot.env.SpringApplicationJsonEnvironmentPostProcessor,\</div><div class="line">org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor</div></pre></td></tr></table></figure></p>
+<p>首先进入SystemEnvironmentPropertySourceEnvironmentPostProcessor</p>
+<p>代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME = <span class="string">"systemEnvironment"</span>;	</div><div class="line"><span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessEnvironment</span><span class="params">(ConfigurableEnvironment environment,</span></span></div><div class="line">			SpringApplication application) &#123;</div><div class="line">		String sourceName = StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME;</div><div class="line">		PropertySource&lt;?&gt; propertySource = environment.getPropertySources()</div><div class="line">				.get(sourceName);</div><div class="line">		<span class="keyword">if</span> (propertySource != <span class="keyword">null</span>) &#123;</div><div class="line">			replacePropertySource(environment, sourceName, propertySource);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">replacePropertySource</span><span class="params">(ConfigurableEnvironment environment,</span></span></div><div class="line">			String sourceName, PropertySource&lt;?&gt; propertySource) &#123;</div><div class="line">		Map&lt;String, Object&gt; originalSource = (Map&lt;String, Object&gt;) propertySource</div><div class="line">				.getSource();</div><div class="line">		SystemEnvironmentPropertySource source = <span class="keyword">new</span> OriginAwareSystemEnvironmentPropertySource(</div><div class="line">				sourceName, originalSource);</div><div class="line">		environment.getPropertySources().replace(sourceName, source);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>把名字为systemEnvironment的配置修改成需要的类的格式。接下来进入SpringApplicationJsonEnvironmentPostProcessor：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessEnvironment</span><span class="params">(ConfigurableEnvironment environment,</span></span></div><div class="line">		SpringApplication application) &#123;</div><div class="line">	MutablePropertySources propertySources = environment.getPropertySources();</div><div class="line">	StreamSupport.stream(propertySources.spliterator(), <span class="keyword">false</span>)</div><div class="line">			.map(JsonPropertyValue::get).filter(Objects::nonNull).findFirst()</div><div class="line">			.ifPresent((v) -&gt; processJson(environment, v));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是惊悚格式就修改成正常的键值对的格式。最后进入CloudFoundryVcapEnvironmentPostProcessor：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessEnvironment</span><span class="params">(ConfigurableEnvironment environment,</span></span></div><div class="line">			SpringApplication application) &#123;</div><div class="line">		<span class="keyword">if</span> (CloudPlatform.CLOUD_FOUNDRY.isActive(environment)) &#123;</div><div class="line">			Properties properties = <span class="keyword">new</span> Properties();</div><div class="line">			addWithPrefix(properties, getPropertiesFromApplication(environment),</div><div class="line">					<span class="string">"vcap.application."</span>);</div><div class="line">			addWithPrefix(properties, getPropertiesFromServices(environment),</div><div class="line">					<span class="string">"vcap.services."</span>);</div><div class="line">			MutablePropertySources propertySources = environment.getPropertySources();</div><div class="line">			<span class="keyword">if</span> (propertySources.contains(</div><div class="line">					CommandLinePropertySource.COMMAND_LINE_PROPERTY_SOURCE_NAME)) &#123;</div><div class="line">				propertySources.addAfter(</div><div class="line">						CommandLinePropertySource.COMMAND_LINE_PROPERTY_SOURCE_NAME,</div><div class="line">						<span class="keyword">new</span> PropertiesPropertySource(<span class="string">"vcap"</span>, properties));</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> &#123;</div><div class="line">				propertySources</div><div class="line">						.addFirst(<span class="keyword">new</span> PropertiesPropertySource(<span class="string">"vcap"</span>, properties));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>因为我启动的是普通的springboot应用没有使用cloud的环境，所以直接跳过。</p>
+<p>总结一下ConfigFileApplicationListener就是修改化境中的配置的操作。</p>
+<p>之后进入AnsiOutputApplicationListener，操作的含义是配置输出的log的颜色的，可以通过配置<strong>spring.output.ansi.enabled=false</strong>来修改，默认是彩色的。</p>
+<p>之后是ClasspathLoggingApplicationListener，只是输出了debug日志。</p>
+<p>DelegatingApplicationListener：转发一下广播</p>
+<p>FileEncodingApplicationListener：确认一下文件的编码格式和系统的编码格式是否一致。</p>
+<p>之后回到SpringApplication的prepareEnvironment方法，后面的操作是把前面产生的环境绑定到main方法上面。</p>
+<p>回到run方法中：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">configureIgnoreBeanInfo(environment);</div><div class="line">Banner printedBanner = printBanner(environment);</div><div class="line">context = createApplicationContext();</div><div class="line">exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,</div><div class="line">					<span class="keyword">new</span> Class[] &#123; ConfigurableApplicationContext.class &#125;, context);</div></pre></td></tr></table></figure></p>
+<p>首先第一行的代码实现：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">configureIgnoreBeanInfo</span><span class="params">(ConfigurableEnvironment environment)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (System.getProperty(</div><div class="line">				CachedIntrospectionResults.IGNORE_BEANINFO_PROPERTY_NAME) == <span class="keyword">null</span>) &#123;</div><div class="line">			Boolean ignore = environment.getProperty(<span class="string">"spring.beaninfo.ignore"</span>,</div><div class="line">					Boolean.class, Boolean.TRUE);</div><div class="line">			System.setProperty(CachedIntrospectionResults.IGNORE_BEANINFO_PROPERTY_NAME,</div><div class="line">					ignore.toString());</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>获取系统参数spring.beaninfo.ignore，如果没有就获取配置文件中的该参数，没有就赋值true。最后设置到系统配置上面。</p>
+<p>第二行的代码：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Banner <span class="title">printBanner</span><span class="params">(ConfigurableEnvironment environment)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.bannerMode == Banner.Mode.OFF) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">	ResourceLoader resourceLoader = (<span class="keyword">this</span>.resourceLoader != <span class="keyword">null</span> ? <span class="keyword">this</span>.resourceLoader</div><div class="line">			: <span class="keyword">new</span> DefaultResourceLoader(getClassLoader()));</div><div class="line">	SpringApplicationBannerPrinter bannerPrinter = <span class="keyword">new</span> SpringApplicationBannerPrinter(</div><div class="line">			resourceLoader, <span class="keyword">this</span>.banner);</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.bannerMode == Mode.LOG) &#123;</div><div class="line">		<span class="keyword">return</span> bannerPrinter.print(environment, <span class="keyword">this</span>.mainApplicationClass, logger);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> bannerPrinter.print(environment, <span class="keyword">this</span>.mainApplicationClass, System.out);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果banner模式为off则直接返回，不是就往下走。之后获取resourceLoader，初始化SpringApplicationBannerPrinter，最后查看banner的模式是log还是CONSOLE，看看是如何输出的。(终于有输出了)。</p>
+<p>第三行代码：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> ConfigurableApplicationContext <span class="title">createApplicationContext</span><span class="params">()</span> </span>&#123;</div><div class="line">		Class&lt;?&gt; contextClass = <span class="keyword">this</span>.applicationContextClass;</div><div class="line">		<span class="keyword">if</span> (contextClass == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="keyword">switch</span> (<span class="keyword">this</span>.webApplicationType) &#123;</div><div class="line">				<span class="keyword">case</span> SERVLET:</div><div class="line">					contextClass = Class.forName(DEFAULT_WEB_CONTEXT_CLASS);</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				<span class="keyword">case</span> REACTIVE:</div><div class="line">					contextClass = Class.forName(DEFAULT_REACTIVE_WEB_CONTEXT_CLASS);</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				<span class="keyword">default</span>:</div><div class="line">					contextClass = Class.forName(DEFAULT_CONTEXT_CLASS);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">catch</span> (ClassNotFoundException ex) &#123;</div><div class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</div><div class="line">						<span class="string">"Unable create a default ApplicationContext, "</span></div><div class="line">								+ <span class="string">"please specify an ApplicationContextClass"</span>,</div><div class="line">						ex);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> (ConfigurableApplicationContext) BeanUtils.instantiateClass(contextClass);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>根据环境的不同，常见不同的上线文。</p>
+<p>第四行代码：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">Collection&lt;T&gt; <span class="title">getSpringFactoriesInstances</span><span class="params">(Class&lt;T&gt; type,</span></span></div><div class="line">		Class&lt;?&gt;[] parameterTypes, Object... args) &#123;</div><div class="line">	ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</div><div class="line">	<span class="comment">// Use names and ensure unique to protect against duplicates</span></div><div class="line">	Set&lt;String&gt; names = <span class="keyword">new</span> LinkedHashSet&lt;&gt;(</div><div class="line">			SpringFactoriesLoader.loadFactoryNames(type, classLoader));</div><div class="line">	List&lt;T&gt; instances = createSpringFactoriesInstances(type, parameterTypes,</div><div class="line">			classLoader, args, names);</div><div class="line">	AnnotationAwareOrderComparator.sort(instances);</div><div class="line">	<span class="keyword">return</span> instances;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>根据type获取在”META-INF/spring.factories”的配置，之后把parameterTypes传入构造方法初始化，之后获取的对象如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1ft726ibvlfj30ib0eeq57.jpg" alt=""></p>
+<p>回到run方法，之后代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">prepareContext(context, environment, listeners, applicationArguments,</div><div class="line">					printedBanner);</div><div class="line">refreshContext(context);</div><div class="line">afterRefresh(context, applicationArguments);</div></pre></td></tr></table></figure></p>
+<p>第一行代码配置应用上下文：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">private void prepareContext(ConfigurableApplicationContext context,</div><div class="line">			ConfigurableEnvironment environment, SpringApplicationRunListeners listeners,ApplicationArguments applicationArguments, Banner printedBanner) &#123;</div><div class="line">		#给应用上下文设置环境变量	</div><div class="line">    	context.setEnvironment(environment);</div><div class="line">		postProcessApplicationContext(context);</div><div class="line">    	#将上面设置的initializers初始化</div><div class="line">		applyInitializers(context);</div><div class="line">    	#listener什么也没有做，空方法</div><div class="line">		listeners.contextPrepared(context);</div><div class="line">		#打印出日志，分别有当前应用的信息和profile信息	</div><div class="line">    	if (this.logStartupInfo) &#123;</div><div class="line">			logStartupInfo(context.getParent() == null);</div><div class="line">			logStartupProfileInfo(context);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		// Add boot specific singleton beans</div><div class="line">		context.getBeanFactory().registerSingleton("springApplicationArguments",</div><div class="line">				applicationArguments);</div><div class="line">		if (printedBanner != null) &#123;</div><div class="line">			context.getBeanFactory().registerSingleton("springBootBanner", printedBanner);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		// Load the sources</div><div class="line">		Set&lt;Object&gt; sources = getAllSources();</div><div class="line">		Assert.notEmpty(sources, "Sources must not be empty");</div><div class="line">    	#把sources带有Component注解的bean注册到应用上下文中</div><div class="line">		load(context, sources.toArray(new Object[0]));</div><div class="line">		listeners.contextLoaded(context);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>最后一行完成了所有的listener添加到应用上下文中，并且广播ApplicationPreparedEvent方法。代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoaded</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (ApplicationListener&lt;?&gt; listener : <span class="keyword">this</span>.application.getListeners()) &#123;</div><div class="line">		<span class="keyword">if</span> (listener <span class="keyword">instanceof</span> ApplicationContextAware) &#123;</div><div class="line">			((ApplicationContextAware) listener).setApplicationContext(context);</div><div class="line">		&#125;</div><div class="line">		context.addApplicationListener(listener);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.initialMulticaster.multicastEvent(</div><div class="line">			<span class="keyword">new</span> ApplicationPreparedEvent(<span class="keyword">this</span>.application, <span class="keyword">this</span>.args, context));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后进入ConfigFileApplicationListener，代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onApplicationPreparedEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.logger.replayTo(ConfigFileApplicationListener.class);</div><div class="line">		addPostProcessors(((ApplicationPreparedEvent) event).getApplicationContext());</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addPostProcessors</span><span class="params">(ConfigurableApplicationContext context)</span> </span>&#123;</div><div class="line">		context.addBeanFactoryPostProcessor(</div><div class="line">				<span class="keyword">new</span> PropertySourceOrderingPostProcessor(context));</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>进入LoggingApplicationListener，将log系统加入beanfactory，代码如下：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onApplicationPreparedEvent</span><span class="params">(ApplicationPreparedEvent event)</span> </span>&#123;</div><div class="line">		ConfigurableListableBeanFactory beanFactory = event.getApplicationContext()</div><div class="line">				.getBeanFactory();</div><div class="line">		<span class="keyword">if</span> (!beanFactory.containsBean(LOGGING_SYSTEM_BEAN_NAME)) &#123;</div><div class="line">			beanFactory.registerSingleton(LOGGING_SYSTEM_BEAN_NAME, <span class="keyword">this</span>.loggingSystem);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>最后进入run方法的最后几行代码：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#该方法是触发容器加载BeanDefinition以及创建对象等等一切操作的始发点，定义了作为应用上下文对象的一个抽  象层面的标准流程。所有spring应用上下文的初始化都是基于这个标准流程的。			</div><div class="line">refreshContext(context);</div><div class="line">#空方法	</div><div class="line">afterRefresh(context, applicationArguments);</div><div class="line">#停止时间计时			</div><div class="line">stopWatch.stop();</div><div class="line">#打出log			</div><div class="line">if (this.logStartupInfo) &#123;</div><div class="line">	new StartupInfoLogger(this.mainApplicationClass)</div><div class="line">			.logStarted(getApplicationLog(), stopWatch);</div><div class="line">&#125;</div><div class="line">#listener发布ApplicationStartedEvent事件		</div><div class="line">listeners.started(context);</div><div class="line">callRunners(context, applicationArguments);</div></pre></td></tr></table></figure></p>
+<p>最后一行的方法如下：启动了所有的runner方法</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">callRunners</span><span class="params">(ApplicationContext context, ApplicationArguments args)</span> </span>&#123;</div><div class="line">	List&lt;Object&gt; runners = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">	runners.addAll(context.getBeansOfType(ApplicationRunner.class).values());</div><div class="line">	runners.addAll(context.getBeansOfType(CommandLineRunner.class).values());</div><div class="line">	AnnotationAwareOrderComparator.sort(runners);</div><div class="line">	<span class="keyword">for</span> (Object runner : <span class="keyword">new</span> LinkedHashSet&lt;&gt;(runners)) &#123;</div><div class="line">		<span class="keyword">if</span> (runner <span class="keyword">instanceof</span> ApplicationRunner) &#123;</div><div class="line">			callRunner((ApplicationRunner) runner, args);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (runner <span class="keyword">instanceof</span> CommandLineRunner) &#123;</div><div class="line">			callRunner((CommandLineRunner) runner, args);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/31/remote-Mysql/" class="archive-article-date">
-  	<time datetime="2017-05-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/31/remote-Mysql/">远程连接MySQL</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://littlebaiyang.github.io/2018/07/12/springboot2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/26/Stream/" class="archive-article-date">
-  	<time datetime="2017-05-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/10/springboot1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring 源码分析--1：入口和初始化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/26/Stream/">java Stream 的用法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/12/idea-for-mac/" class="archive-article-date">
-  	<time datetime="2017-05-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/12/idea-for-mac/">IntelliJ IDEA For Mac 快捷键 (一)</a>
-    </h1>
+  <div id="SOHUCS" sid="springboot2" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cysX3aGWt",
+        conf: "prod_1dcda447175aada96edcdb7e412338fa"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">idea</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'https-coder-mr-yang-github-io-learn-github-io'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
-    
+  
 
 
           </div>
@@ -314,8 +497,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

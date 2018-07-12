@@ -57,7 +57,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags">主题</a></li>
+				<li><a href="/tags/java">java</a></li>
+	        
+				<li><a href="/tags/spring">spring</a></li>
 	        
 			</ul>
 		</nav>
@@ -115,6 +117,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -132,12 +136,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags">主题</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/java">java</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/spring">spring</a></li>
 		        
 				</ul>
 			</nav>
@@ -153,6 +159,165 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-springboot2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/springboot2/">spring 源码分析--2：启动</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/springboot2/" class="archive-article-date">
+  	<time datetime="2018-07-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1695556135,2938104612&amp;fm=27&amp;gp=0.jpg" alt=""></p>
+<h2>3.执行启动流程</h2>
+<p>接下来我们来看启动的主题代码，如下：
+        
+          <a class="article-more-a" href="/2018/07/12/springboot2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/springboot2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-springboot1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/10/springboot1/">spring 源码分析--1：入口和初始化</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/10/springboot1/" class="archive-article-date">
+  	<time datetime="2018-07-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1ft6uaeq3x6j30et08c3zc.jpg" alt=""></p>
+<h2>1. 入口</h2>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">	#1.初始化SpringApplication类，之后执行run方法</div><div class="line">    new SpringApplication(ApringTestApplication.class).run(args);</div><div class="line">	#2.直接调用SpringApplication类中的run的静态方法</div><div class="line">	SpringApplication.run(ApringTestApplication.class, args);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>一般来说，由以上两种的启动springboot的方法，但是两种方法草你个本质上来说是一样的。接下来咱们来看一下第二种方法中run静态方法中的执行：</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(Class&lt;?&gt; primarySource,</div><div class="line">		String... args)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> run(<span class="keyword">new</span> Class&lt;?&gt;[] &#123; primarySource &#125;, args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>
+        
+          <a class="article-more-a" href="/2018/07/10/springboot1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/10/springboot1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-maven" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -813,6 +978,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
             
             <div class="clearfix"></div>

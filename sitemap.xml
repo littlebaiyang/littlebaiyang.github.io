@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://littlebaiyang.github.io/2018/07/12/springboot2/</loc>
+    
+    <lastmod>2018-07-12T08:23:28.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://littlebaiyang.github.io/2018/07/10/springboot1/</loc>
+    
+    <lastmod>2018-07-12T08:23:28.364Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://littlebaiyang.github.io/2017/06/14/maven/</loc>
     
     <lastmod>2018-07-11T10:12:55.257Z</lastmod>
