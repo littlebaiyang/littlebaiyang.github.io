@@ -425,11 +425,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一步：修改配置文件的端口绑定"><a href="#第一步：修改配置文件的端口绑定" class="headerlink" title="第一步：修改配置文件的端口绑定"></a>第一步：修改配置文件的端口绑定</h2><p>打开的目录可能会根据MySQL的版本稍有不同，可以先尝试打开/etc/mysql/my.cnf这个配置文件，若该文件不存在或文件内容为空，则尝试下面的文件路径。</p>
+        <h2>第一步：修改配置文件的端口绑定</h2>
+<p>打开的目录可能会根据MySQL的版本稍有不同，可以先尝试打开/etc/mysql/my.cnf这个配置文件，若该文件不存在或文件内容为空，则尝试下面的文件路径。</p>
 <pre><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-</code></pre><p>在下面行的开头加上#，注释掉该行，然后保存退出vim：</p>
+</code></pre>
+<p>在下面行的开头加上#，注释掉该行，然后保存退出vim：</p>
 <pre><code>bind-address = 127.0.0.1
 </code></pre>
+<p>
         
           <a class="article-more-a" href="/2017/05/31/remote-Mysql/#more">more >></a>
         
@@ -508,15 +511,22 @@
         <hr>
 <p>[TOC]</p>
 <p>Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。</p>
-<h2 id="流的初始化与转换："><a href="#流的初始化与转换：" class="headerlink" title="流的初始化与转换："></a>流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
-<h3 id="始化一个流："><a href="#始化一个流：" class="headerlink" title="始化一个流："></a>始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-</code></pre><h3 id="数组转换为一个流："><a href="#数组转换为一个流：" class="headerlink" title="数组转换为一个流："></a>数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+<h2>流的初始化与转换：</h2>
+<p>Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
+<h3>始化一个流：</h3>
+<pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre>
+<h3>数组转换为一个流：</h3>
+<pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
 stream = Stream.of(strArray);
 或者
 stream = Arrays.stream(strArray);
-</code></pre><h3 id="集合对象转换为一个流（Collections）："><a href="#集合对象转换为一个流（Collections）：" class="headerlink" title="集合对象转换为一个流（Collections）："></a>集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
+</code></pre>
+<h3>集合对象转换为一个流（Collections）：</h3>
+<pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
 stream = list.stream();
 </code></pre>
+<p>
         
           <a class="article-more-a" href="/2017/05/26/Stream/#more">more >></a>
         
@@ -961,23 +971,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-idea -MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-maven -java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
