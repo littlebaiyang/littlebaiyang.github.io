@@ -181,8 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1695556135,2938104612&amp;fm=27&amp;gp=0.jpg" alt=""></p>
-<h2>3.执行启动流程</h2>
-<p>接下来我们来看启动的主题代码，如下：
+<h2 id="3-执行启动流程"><a href="#3-执行启动流程" class="headerlink" title="3.执行启动流程"></a>3.执行启动流程</h2><p>接下来我们来看启动的主题代码，如下：<br>
         
           <a class="article-more-a" href="/2018/07/12/springboot2/#more">more >></a>
         
@@ -259,11 +258,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1ft6uaeq3x6j30et08c3zc.jpg" alt=""></p>
-<h2>1. 入口</h2>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">	#1.初始化SpringApplication类，之后执行run方法</div><div class="line">    new SpringApplication(ApringTestApplication.class).run(args);</div><div class="line">	#2.直接调用SpringApplication类中的run的静态方法</div><div class="line">	SpringApplication.run(ApringTestApplication.class, args);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="1-入口"><a href="#1-入口" class="headerlink" title="1. 入口"></a>1. 入口</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">	#1.初始化SpringApplication类，之后执行run方法</div><div class="line">    new SpringApplication(ApringTestApplication.class).run(args);</div><div class="line">	#2.直接调用SpringApplication类中的run的静态方法</div><div class="line">	SpringApplication.run(ApringTestApplication.class, args);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <p>一般来说，由以上两种的启动springboot的方法，但是两种方法草你个本质上来说是一样的。接下来咱们来看一下第二种方法中run静态方法中的执行：</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(Class&lt;?&gt; primarySource,</div><div class="line">		String... args)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> run(<span class="keyword">new</span> Class&lt;?&gt;[] &#123; primarySource &#125;, args);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ConfigurableApplicationContext <span class="title">run</span><span class="params">(Class&lt;?&gt; primarySource,</div><div class="line">		String... args)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> run(<span class="keyword">new</span> Class&lt;?&gt;[] &#123; primarySource &#125;, args);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2018/07/10/springboot1/#more">more >></a>
         
@@ -340,12 +337,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>
-<p>maven.test.skip和skipTests的区别</p>
+<li><p>maven.test.skip和skipTests的区别</p>
 <p>-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。</p>
 </li>
 </ul>
-<p>
         
           <a class="article-more-a" href="/2017/06/14/maven/#more">more >></a>
         
@@ -425,14 +420,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2>第一步：修改配置文件的端口绑定</h2>
-<p>打开的目录可能会根据MySQL的版本稍有不同，可以先尝试打开/etc/mysql/my.cnf这个配置文件，若该文件不存在或文件内容为空，则尝试下面的文件路径。</p>
+        <h2 id="第一步：修改配置文件的端口绑定"><a href="#第一步：修改配置文件的端口绑定" class="headerlink" title="第一步：修改配置文件的端口绑定"></a>第一步：修改配置文件的端口绑定</h2><p>打开的目录可能会根据MySQL的版本稍有不同，可以先尝试打开/etc/mysql/my.cnf这个配置文件，若该文件不存在或文件内容为空，则尝试下面的文件路径。</p>
 <pre><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-</code></pre>
-<p>在下面行的开头加上#，注释掉该行，然后保存退出vim：</p>
+</code></pre><p>在下面行的开头加上#，注释掉该行，然后保存退出vim：</p>
 <pre><code>bind-address = 127.0.0.1
 </code></pre>
-<p>
         
           <a class="article-more-a" href="/2017/05/31/remote-Mysql/#more">more >></a>
         
@@ -511,22 +503,15 @@
         <hr>
 <p>[TOC]</p>
 <p>Java8中提供了Stream对集合操作作出了极大的简化，学习了Stream之后，我们以后不用使用for循环就能对集合作出很好的操作。</p>
-<h2>流的初始化与转换：</h2>
-<p>Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
-<h3>始化一个流：</h3>
-<pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
-</code></pre>
-<h3>数组转换为一个流：</h3>
-<pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+<h2 id="流的初始化与转换："><a href="#流的初始化与转换：" class="headerlink" title="流的初始化与转换："></a>流的初始化与转换：</h2><p>  Java中的Stream的所有操作都是针对流的，所以，使用Stream必须要得到Stream对象：</p>
+<h3 id="始化一个流："><a href="#始化一个流：" class="headerlink" title="始化一个流："></a>始化一个流：</h3><pre><code>Stream stream = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre><h3 id="数组转换为一个流："><a href="#数组转换为一个流：" class="headerlink" title="数组转换为一个流："></a>数组转换为一个流：</h3><pre><code>String [] strArray = new String[] {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
 stream = Stream.of(strArray);
 或者
 stream = Arrays.stream(strArray);
-</code></pre>
-<h3>集合对象转换为一个流（Collections）：</h3>
-<pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
+</code></pre><h3 id="集合对象转换为一个流（Collections）："><a href="#集合对象转换为一个流（Collections）：" class="headerlink" title="集合对象转换为一个流（Collections）："></a>集合对象转换为一个流（Collections）：</h3><pre><code>List&lt;String&gt; list = Arrays.asList(strArray);
 stream = list.stream();
 </code></pre>
-<p>
         
           <a class="article-more-a" href="/2017/05/26/Stream/#more">more >></a>
         
@@ -603,8 +588,7 @@ stream = list.stream();
     <div class="article-entry" itemprop="articleBody">
       
         <p>[TOC]</p>
-<h3>Mac键盘符号和修饰键说明</h3>
-<pre><code>⌘ Command⇧ Shift⌥ Option
+<h3 id="Mac键盘符号和修饰键说明"><a href="#Mac键盘符号和修饰键说明" class="headerlink" title="Mac键盘符号和修饰键说明"></a>Mac键盘符号和修饰键说明</h3><pre><code>⌘ Command⇧ Shift⌥ Option
 ⌃ Control
 ↩︎ Return/Enter
 ⌫ Delete
@@ -621,7 +605,6 @@ End Fn + →
 ⇤ 左制表符（Shift+Tab）
 ⎋ Escape (Esc)
 </code></pre>
-<p>
         
           <a class="article-more-a" href="/2017/05/12/idea-for-mac/#more">more >></a>
         
@@ -701,18 +684,16 @@ End Fn + →
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于自己对hexo不是很熟悉，所以在这里将hexo的使用过程和一些其他的心得写下来，希望对其他人有用。</p>
+        <p>  由于自己对hexo不是很熟悉，所以在这里将hexo的使用过程和一些其他的心得写下来，希望对其他人有用。</p>
 <ul>
 <li>清理 类似于maven的命令  mvn clean</li>
 </ul>
 <pre><code> hexo clean
-</code></pre>
-<ul>
+</code></pre><ul>
 <li>生成页面  类似于maven中的mvn install</li>
 </ul>
 <pre><code>hexo generate
 </code></pre>
-<p>
         
           <a class="article-more-a" href="/2017/04/23/secode/#more">more >></a>
         
@@ -975,15 +956,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,27 +1020,15 @@ MathJax.Hub.Queue(function() {
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://www.jianshu.com/u/42aaf32ee85a" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>简书</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="https://github.com/littlebaiyang" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>github</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="https://gitee.com/littlebaiyang" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码云</a>
             </li>
           
         </ul>
@@ -1070,7 +1039,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">小白一枚&lt;br&gt;&lt;br&gt;还在发奋努力&lt;br&gt;谢谢大家</div>
   	  	
     	</section>
     
